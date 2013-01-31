@@ -63,7 +63,7 @@ class User extends AppModel {
 		'role' => array(
 			'notempty' => array(
 				'rule' => array('notempty'),
-				//'message' => 'Your custom message here',
+				'message' => 'Escolha o nível de acesso desse usuário',
 				//'allowEmpty' => false,
 				//'required' => false,
 				//'last' => false, // Stop validation after this rule
