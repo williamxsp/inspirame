@@ -16,47 +16,63 @@
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
 
-$cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework');
+$siteTitle = __d('cake_dev', 'Inspirame');
 ?>
 <!DOCTYPE html>
 <html>
 <head>
 	<?php echo $this->Html->charset(); ?>
 	<title>
-		<?php echo $cakeDescription ?>:
+		<?php echo $siteTitle ?> | 
 		<?php echo $title_for_layout; ?>
 	</title>
 	<?php
-		echo $this->Html->meta('icon');
+	echo $this->Html->meta('icon');
 
-		echo $this->Html->css("bootstrap");
-		echo $this->Html->css("lightbox");
+	echo $this->Html->css("bootstrap");
+	echo $this->Html->css("lightbox");
 
-		echo $this->Html->script("jquery");
-		echo $this->Html->script("jquery-ui");
-		echo $this->Html->script("bootstrap");
-		echo $this->Html->script("lightbox");
-		echo $this->Html->script("jquery.smooth-scroll.min");
-
-		echo $this->fetch('meta');
-		echo $this->fetch('css');
-		echo $this->fetch('script');
+	echo $this->fetch('meta');
+	echo $this->fetch('css');
 	?>
 </head>
 <body>
 	<div id="container" class="container">
 		<div class="row">
 			<div class="span12">
-			<div id="header" class="row page-header">
-				<h1><?php echo $this->Html->link("Repositório", "/"); ?> <small>Olimpíada do Conhecimento - World Skills 2013</small></h1>
+				<div id="header" class="row page-header">
+					<h1><?php echo $this->Html->link("Repositório", "/"); ?> <small>Olimpíada do Conhecimento - World Skills 2013</small></h1>
 
+				</div>
+				<div class="navbar">
+					<nav class="navbar-inner">
+						<ul class="nav">
+							<li><?php echo $this->Html->link('Home', '/') ?></li>
+							<li><?php echo $this->Html->link('Categorias', array('controller' => 'categories')) ?></li>
+							<li><?php echo $this->element('login') ?></li>
+						</ul>
+					</nav>
+				</div>
+				<div id="content" class="row">
+					<?php echo $this->Session->flash(); ?>
+					<?php echo $this->fetch('content'); ?>
+				</div>
 			</div>
-			<div id="content" class="row">
-				<?php echo $this->Session->flash(); ?>
-				<?php echo $this->fetch('content'); ?>
-			</div>
-		</div>
 		</div>
 	</div>
+
+
+	<?php 
+	echo $this->Html->script("jquery");
+	echo $this->Html->script("jquery-ui");
+	echo $this->Html->script("bootstrap");
+	echo $this->Html->script("lightbox");
+	echo $this->Html->script("jquery.smooth-scroll.min");
+	echo $this->fetch('script');
+	?>
+
+	<?php if (Configure::read('debug') >= 1) {
+		echo $this->element('sql_dump');
+	} ?>
 </body>
 </html>

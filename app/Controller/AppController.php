@@ -33,6 +33,24 @@ App::uses('Controller', 'Controller');
  */
 class AppController extends Controller {
 
+  var $components = array('Auth' => array(
+    'authenticate' => array(
+      'Form' => array(
+          'fields' => array('username' => 'login')
+        )
+      ),
+    'authError' => 'Sua mula',
+    'loginError' => 'Usuário e senha inválidos',
+    'loginRedirect' => array('controller' => 'layouts', 'action' => 'index'),
+    'logoutRedirect' => array('controller' => 'layouts', 'action' => 'index')
+      // 'loginAction' => array(
+      //  'controller' => 'users',
+      //  'action' => 'login'
+      //   )
+    ), "Session");
 
-
+  public function beforeFilter($options = array())
+  {
+    $this->Auth->allow('index');
+  }
 }
