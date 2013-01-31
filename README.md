@@ -1,0 +1,4 @@
+inspirame
+=========
+
+=lorem()
