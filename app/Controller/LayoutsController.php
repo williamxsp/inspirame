@@ -18,7 +18,6 @@ public $paginate = array('limit'=>8, 'order' => array('Layout.created' => 'desc'
  */
 	public function index() {
 		$this->Layout->recursive = 1;
-
 		$this->set('layouts', $this->paginate());
 	}
 
@@ -45,7 +44,7 @@ public $paginate = array('limit'=>8, 'order' => array('Layout.created' => 'desc'
 	public function add() {
 		if ($this->request->is('post')) {
 			$this->Layout->create();
-			$this->request->data['Layout']['user_id'] = 1;
+			$this->request->data['Layout']['user_id'] = Authcomponent::user('id');
 			if ($this->Layout->save($this->request->data)) {
 				$this->Session->setFlash(__('The layout has been saved'));
 				$this->redirect(array('action' => 'index'));
@@ -106,4 +105,11 @@ public $paginate = array('limit'=>8, 'order' => array('Layout.created' => 'desc'
 		$this->Session->setFlash(__('Layout was not deleted'));
 		$this->redirect(array('action' => 'index'));
 	}
+
+	public function beforeFilter($options = null)
+	{
+		parent::beforeFilter();
+		$this->Auth->allow('index');
+	}
+
 }

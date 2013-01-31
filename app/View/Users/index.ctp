@@ -6,6 +6,7 @@
 			<th><?php echo $this->Paginator->sort('login'); ?></th>
 			<th><?php echo $this->Paginator->sort('password'); ?></th>
 			<th><?php echo $this->Paginator->sort('name'); ?></th>
+			<th><?php echo $this->Paginator->sort('role'); ?></th>
 			<th class="actions"><?php echo __('Actions'); ?></th>
 	</tr>
 	<?php foreach ($users as $user): ?>
@@ -14,6 +15,7 @@
 		<td><?php echo h($user['User']['login']); ?>&nbsp;</td>
 		<td><?php echo h($user['User']['password']); ?>&nbsp;</td>
 		<td><?php echo h($user['User']['name']); ?>&nbsp;</td>
+		<td><?php echo h($user['User']['role']); ?>&nbsp;</td>
 		<td class="actions">
 			<?php echo $this->Html->link(__('View'), array('action' => 'view', $user['User']['id'])); ?>
 			<?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $user['User']['id'])); ?>
