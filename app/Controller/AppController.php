@@ -42,15 +42,17 @@ class AppController extends Controller {
     'authError' => 'Sua mula',
     'loginError' => 'Usuário e senha inválidos',
     'loginRedirect' => array('controller' => 'layouts', 'action' => 'index'),
-    'logoutRedirect' => array('controller' => 'layouts', 'action' => 'index')
-      // 'loginAction' => array(
-      //  'controller' => 'users',
-      //  'action' => 'login'
-      //   )
+    'logoutRedirect' => array('controller' => 'layouts', 'action' => 'index'),
+    'authorize' => array('controller')
     ), "Session");
 
   public function beforeFilter($options = array())
   {
     $this->Auth->allow('index');
+  }
+
+  public function isAuthorized($user = null)
+  {
+    return false;
   }
 }
