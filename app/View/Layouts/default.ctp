@@ -27,45 +27,41 @@ $title_site = __d('cake_dev', 'Repositório');
 		<?php echo $title_for_layout; ?>
 	</title>
 	<?php
-	echo $this->Html->meta('icon');
+		echo $this->Html->meta('icon');
 
-	echo $this->Html->css("bootstrap");
-	echo $this->Html->css("lightbox");
+		echo $this->Html->css("bootstrap");
+		echo $this->Html->css("lightbox");
 
-	echo $this->fetch('meta');
-	echo $this->fetch('css');
+		echo $this->Html->script("jquery");
+		echo $this->Html->script("jquery-ui");
+		echo $this->Html->script("bootstrap");
+		echo $this->Html->script("lightbox");
+		echo $this->Html->script("jquery.smooth-scroll.min");
+
+		echo $this->fetch('meta');
+		echo $this->fetch('css');
+		echo $this->fetch('script');
 	?>
 </head>
 <body>
 	<div id="container" class="container">
-		<div class="span12">
+		<div class="row">
+			<div class="span12">
 			<div id="header" class="row page-header">
 				<div class="span9">
 					<h2><?php echo $this->Html->link("Repositório", "/"); ?> <small>Olimpíada do Conhecimento - World Skills 2013</small></h2	>
-					</div>
-					<div class="span2">
-						<?php echo $this->element('login'); ?>
-					</div>
+				</div>
+				<div class="span2">
+					<?php echo $this->element('login'); ?>
 				</div>
 			</div>
-			<?php echo $this->Session->flash(); ?>
-			<div id="content" class="span12">
+			<div id="content" class="row">
+				<?php echo $this->Session->flash(); ?>
 				<?php echo $this->fetch('content'); ?>
 			</div>
-
-
-			<?php 
-			echo $this->Html->script("jquery");
-			echo $this->Html->script("jquery-ui");
-			echo $this->Html->script("bootstrap");
-			echo $this->Html->script("lightbox");
-			echo $this->Html->script("jquery.smooth-scroll.min");
-			echo $this->fetch('script');
-			?>
-
-			<?php if (Configure::read('debug') >= 1) {
-				echo $this->element('sql_dump');
-			} ?>
 		</div>
-	</body>
-	</html>
+		</div>
+	</div>
+	<?php //echo $this->element("sql_dump"); ?>
+</body>
+</html>
