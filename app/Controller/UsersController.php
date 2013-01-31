@@ -101,8 +101,19 @@ public function login()
 	{
 		if($this->Auth->login())
 		{
+<<<<<<< HEAD
 
 			$this->redirect($this->Auth->redirect());
+=======
+			if($this->Auth->login())
+			{
+				$this->redirect($this->Auth->redirect());
+			}
+			else
+			{
+				$this->Session->setFlash("Usuário inválido");
+			}	
+>>>>>>> 325b0a695fd8be4b91c1c0c4c27e86400ee9d3fc
 		}
 		else
 		{
@@ -128,6 +139,7 @@ public function isAuthorized($user = null)
 	if (parent::isAuthorized($user))
 		return true;
 
+<<<<<<< HEAD
 	$action = $this->request->action;
 	switch ($action) {
 		case 'edit':
@@ -139,5 +151,31 @@ public function isAuthorized($user = null)
 			break;
 	}
 }
+=======
+	public function logout()
+	{	
+		$this->redirect($this->Auth->logout());
+	}
+
+	public function beforeFilter()
+	{
+		parent::beforeFilter();
+		$this->Auth->allow('logout', 'login');
+	}
+
+	function isAuthorized($user)
+	{
+		$role = $user['role'];
+
+		if($this->request->params['action'] == 'add' && $role != 'admin')
+		{
+			$this->Session->setFlash("Você tem que ser administrador para acessar esta página");
+			return false;
+		}
+
+		return true;
+	}
+
+>>>>>>> 325b0a695fd8be4b91c1c0c4c27e86400ee9d3fc
 
 }
