@@ -21,6 +21,11 @@
 			<?php echo h($user['User']['name']); ?>
 			&nbsp;
 		</dd>
+		<dt><?php echo __('Role'); ?></dt>
+		<dd>
+			<?php echo h($user['User']['role']); ?>
+			&nbsp;
+		</dd>
 	</dl>
 </div>
 <div class="actions">

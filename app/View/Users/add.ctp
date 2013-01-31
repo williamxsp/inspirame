@@ -6,6 +6,7 @@
 		echo $this->Form->input('login');
 		echo $this->Form->input('password');
 		echo $this->Form->input('name');
+		echo $this->Form->select('role', array('admin' => 'Administrador', 'usuario'=> 'Úsuário'), array('default' => 'usuario'));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(__('Submit')); ?>
