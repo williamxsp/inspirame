@@ -101,7 +101,6 @@ class UsersController extends AppController {
 		{
 			if($this->Auth->login())
 			{
-
 				$this->redirect($this->Auth->redirect());
 			}
 			else
@@ -112,6 +111,30 @@ class UsersController extends AppController {
 		
 	}
 
+
+	public function logout()
+	{	
+		$this->redirect($this->Auth->logout());
+	}
+
+	public function beforeFilter()
+	{
+		parent::beforeFilter();
+		$this->Auth->allow('logout', 'login');
+	}
+
+	function isAuthorized($user)
+	{
+		$role = $user['role'];
+
+		if($this->request->params['action'] == 'add' && $role != 'admin')
+		{
+			$this->Session->setFlash("Você tem que ser administrador para acessar esta página");
+			return false;
+		}
+
+		return true;
+	}
 
 
 }

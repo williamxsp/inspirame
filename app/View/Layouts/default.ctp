@@ -16,14 +16,14 @@
  * @license       MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
 
-$cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework');
+$title_site = __d('cake_dev', 'Repositório');
 ?>
 <!DOCTYPE html>
 <html>
 <head>
 	<?php echo $this->Html->charset(); ?>
 	<title>
-		<?php echo $cakeDescription ?>:
+		<?php echo $title_site ?> |
 		<?php echo $title_for_layout; ?>
 	</title>
 	<?php
@@ -48,8 +48,12 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 		<div class="row">
 			<div class="span12">
 			<div id="header" class="row page-header">
-				<h1><?php echo $this->Html->link("Repositório", "/"); ?> <small>Olimpíada do Conhecimento - World Skills 2013</small></h1>
-
+				<div class="span9">
+					<h2><?php echo $this->Html->link("Repositório", "/"); ?> <small>Olimpíada do Conhecimento - World Skills 2013</small></h2	>
+				</div>
+				<div class="span2">
+					<?php echo $this->element('login'); ?>
+				</div>
 			</div>
 			<div id="content" class="row">
 				<?php echo $this->Session->flash(); ?>
@@ -58,5 +62,6 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 		</div>
 		</div>
 	</div>
+	<?php //echo $this->element("sql_dump"); ?>
 </body>
 </html>
