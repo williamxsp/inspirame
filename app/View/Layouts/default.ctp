@@ -38,26 +38,22 @@ $siteTitle = __d('cake_dev', 'Inspirame');
 </head>
 <body>
 	<div id="container" class="container">
-		<div class="row">
-			<div class="span12">
-				<div id="header" class="row page-header">
-					<h1><?php echo $this->Html->link("Repositório", "/"); ?> <small>Olimpíada do Conhecimento - World Skills 2013</small></h1>
+		<div id="header" class="page-header">
+			<h1><?php echo $this->Html->link("Repositório", "/"); ?> <small>Olimpíada do Conhecimento - World Skills 2013</small></h1>
 
-				</div>
-				<div class="navbar">
-					<nav class="navbar-inner">
-						<ul class="nav">
-							<li><?php echo $this->Html->link('Home', '/') ?></li>
-							<li><?php echo $this->Html->link('Categorias', array('controller' => 'categories')) ?></li>
-							<li><?php echo $this->element('login') ?></li>
-						</ul>
-					</nav>
-				</div>
-				<div id="content" class="row">
-					<?php echo $this->Session->flash(); ?>
-					<?php echo $this->fetch('content'); ?>
-				</div>
-			</div>
+		</div>
+		<div class="navbar">
+			<nav class="navbar-inner">
+				<ul class="nav">
+					<li><?php echo $this->Html->link('Home', '/') ?></li>
+					<li><?php echo $this->Html->link('Categorias', array('controller' => 'categories')) ?></li>
+					<li><?php echo $this->element('login') ?></li>
+				</ul>
+			</nav>
+		</div>
+		<?php echo $this->Session->flash(); ?>
+		<div id="content">
+			<?php echo $this->fetch('content'); ?>
 		</div>
 	</div>
 

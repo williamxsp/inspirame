@@ -123,4 +123,21 @@ public function beforeFilter()
 	$this->Auth->allow('add');
 }
 
+public function isAuthorized($user = null)
+{
+	if (parent::isAuthorized($user))
+		return true;
+
+	$action = $this->request->action;
+	switch ($action) {
+		case 'edit':
+			return $user['id'] == $this->request->pass[0];
+			break;
+
+		case 'add':
+			return false;
+			break;
+	}
+}
+
 }
