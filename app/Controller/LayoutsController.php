@@ -119,6 +119,14 @@ public $paginate = array('limit'=>8, 'order' => array('Layout.created' => 'desc'
 		$this->Auth->allow('index');
 	}
 
+	public function isAuthorized($user = null)
+	{
+		if (parent::isAuthorized($user))
+			return true;
+		if ($this->request->action === 'add')
+			return true;
+	}
+
 	function search()
 	{
 		$titulo = '';

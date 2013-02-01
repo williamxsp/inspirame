@@ -51,16 +51,13 @@ class AppController extends Controller {
 		),
 		'Session');
 
-	public function beforeFilter()
-	{
-		$this->Auth->allow("index");
-	}
+  public function beforeFilter($options = array())
+  {
+    $this->Auth->allow('index');
+  }
 
-	public function isAuthorized($user)
-	{
-		return true;
-	}
-
-
-
+  public function isAuthorized($user = null)
+  {
+    return false;
+  }
 }

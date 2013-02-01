@@ -5,7 +5,8 @@
 	<?php
 		echo $this->Form->input('name', array('label' => 'Título', 'class' => 'span8'));
 		echo $this->Form->input("filename", array('type' => 'file', 'label' => 'Imagem'));
-		echo $this->Form->input('Category', array('label' => 'Categorias'));
+		echo $this->Form->input('Category', array('label' => 'Categorias',
+      'type' => 'text'));
 	?>
 	</fieldset>
 <?php echo $this->Form->end(array('label' => 'Enviar', 'class' => 'btn btn-primary')); ?>

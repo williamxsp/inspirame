@@ -57,6 +57,9 @@ class UsersController extends AppController {
  * @return void
  */
 	public function edit($id = null) {
+		if (!isset($id))
+			$id = $this->Auth->user('id');
+
 		if (!$this->User->exists($id)) {
 			throw new NotFoundException(__('Invalid user'));
 		}
@@ -82,11 +85,11 @@ class UsersController extends AppController {
  * @return void
  */
 	public function delete($id = null) {
+		$this->request->onlyAllow('post', 'delete');
 		$this->User->id = $id;
 		if (!$this->User->exists()) {
 			throw new NotFoundException(__('Invalid user'));
 		}
-		$this->request->onlyAllow('post', 'delete');
 		if ($this->User->delete()) {
 			$this->Session->setFlash(__('User deleted'));
 			$this->redirect(array('action' => 'index'));
@@ -130,6 +133,12 @@ class UsersController extends AppController {
 		if($this->request->params['action'] == 'add' && $role != 'admin')
 		{
 			$this->Session->setFlash("Você tem que ser administrador para acessar esta página");
+			return false;
+		}
+
+		//Usuario só pode manipular sua própria página
+		if (isset($this->request->pass[0]) &&
+			$this->request->pass[0] != $user['id']) {
 			return false;
 		}
 

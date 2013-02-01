@@ -50,7 +50,7 @@ $title_site = __d('cake_dev', 'Repositório');
 					<?php echo $this->element('login'); ?>
 				</div>
 			</div>
-			<?php echo $this->element("menu"); ?>
+			<div class="menu"><?php echo $this->element("menu"); ?></div>
 			<div id="content" class="row">
 				<?php echo $this->Session->flash(); ?>
 				<?php echo $this->fetch('content'); ?>
