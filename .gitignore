@@ -10,4 +10,4 @@
 /tags
 /app/webroot/img/upload
 /lib/Cake
-
+*index.php
