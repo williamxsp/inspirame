@@ -52,7 +52,8 @@ class User extends AppModel {
 		),
 		'name' => array(
 			'notempty' => array(
-				'rule' => array('notempty'),
+				'rule' => array('notempty',
+					array('inList', array('admin', 'usuario'))),
 				//'message' => 'Your custom message here',
 				//'allowEmpty' => false,
 				//'required' => false,
