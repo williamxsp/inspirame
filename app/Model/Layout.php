@@ -94,6 +94,7 @@ class Layout extends AppModel {
 		{
 			mkdir($destination);
 		}
+		
 		$f = $this->data['Layout']['filename'];
 		$filename = time() . $f['name'];
 

@@ -7,8 +7,8 @@ App::uses('AppController', 'Controller');
  */
 class LayoutsController extends AppController {
 
-
-
+public $components = array("RequestHandler");
+public $helper = array("Text");
 public $paginate = array('limit'=>8, 'order' => array('Layout.created' => 'desc'));
 
 /**
@@ -18,6 +18,13 @@ public $paginate = array('limit'=>8, 'order' => array('Layout.created' => 'desc'
  */
 	public function index() {
 		$this->Layout->recursive = 1;
+
+		if($this->RequestHandler->isRss())
+		{
+			$layouts = $this->Layout->find("all", array('limit' => 20, 'order' => 'Layout.created DESC'));
+			return $this->set("layouts", $layouts);
+		}
+		
 		$this->set('layouts', $this->paginate());
 	}
 
@@ -110,6 +117,32 @@ public $paginate = array('limit'=>8, 'order' => array('Layout.created' => 'desc'
 	{
 		parent::beforeFilter();
 		$this->Auth->allow('index');
+	}
+
+	function search()
+	{
+		$titulo = '';
+
+
+		if($this->request->is("post") && isset($this->request->data['Layout']["titulo"]))
+		{
+			$titulo = $this->request->data['Layout']["titulo"];
+		}
+
+		$options = array(
+			'conditions'=> array('Layout.name LIKE' => '%' . $titulo . '%')
+			);
+
+		$this->paginate = $options;
+		$layouts = $this->paginate();
+
+		$this->set('layouts', $layouts);
+		$this->render('index');
+	}
+
+	function xml()
+	{
+		
 	}
 
 }
