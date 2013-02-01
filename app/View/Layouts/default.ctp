@@ -32,11 +32,6 @@ $title_site = __d('cake_dev', 'Repositório');
 		echo $this->Html->css("bootstrap");
 		echo $this->Html->css("lightbox");
 
-		echo $this->Html->script("jquery");
-		echo $this->Html->script("jquery-ui");
-		echo $this->Html->script("bootstrap");
-		echo $this->Html->script("lightbox");
-		echo $this->Html->script("jquery.smooth-scroll.min");
 
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
@@ -55,6 +50,7 @@ $title_site = __d('cake_dev', 'Repositório');
 					<?php echo $this->element('login'); ?>
 				</div>
 			</div>
+			<div class="menu"><?php echo $this->element("menu"); ?></div>
 			<div id="content" class="row">
 				<?php echo $this->Session->flash(); ?>
 				<?php echo $this->fetch('content'); ?>
@@ -62,6 +58,18 @@ $title_site = __d('cake_dev', 'Repositório');
 		</div>
 		</div>
 	</div>
+	 
+	<?php 
+		echo $this->Html->script("jquery");
+		echo $this->Html->script("jquery-ui");
+		echo $this->Html->script("bootstrap");
+		echo $this->Html->script("lightbox");
+		echo $this->Html->script("jquery.smooth-scroll.min");
+		echo $this->Html->script("dropdown");
+	 ?>
+	 <script type="text/javascript">
+	 	$('.dropdown-toggle').dropdown();
+	 </script>
 	<?php //echo $this->element("sql_dump"); ?>
 </body>
 </html>
